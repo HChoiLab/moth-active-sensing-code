@@ -41,7 +41,7 @@
     "uncertainty_metric": "joint",
     "gate_mode": "fixed_threshold",
     "fixed_gate_threshold": 520,
-    "fixed_switch_timestep": 20,
+    "fixed_switch_timestep": 40,
     "gate_hidden_dims": [128, 128],
     "gate_lr": 0.0003,
     "exploration_action_delta_huber_beta": 0.05,
