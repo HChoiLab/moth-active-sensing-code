@@ -1,0 +1,87 @@
+{
+  "run_name": "",
+  "output_root": "results/experiments/non_lex_flat",
+  "notes": "Small uncertainty-gated experiment to validate the train/eval pipeline.",
+  "environment": {
+    "dt": 0.01,
+    "max_steps": 100,
+    "max_press_depth": 5.0,
+    "min_depth": 0,
+    "pattern_type": "none",
+    "visual_field_size": 25.0,
+    "flower_r0": 2.0,
+    "flower_R": 50.0,
+    "flower_value": 1.0,
+    "pattern_value": 0.5
+  },
+  "model": {
+    "model_type": "uncertainty_gated_allocentric",
+    "pretrained_perception_checkpoint": "checkpoints/exploration_flat.pt",
+    "latent_dim": 1024,
+    "hidden_dim": 1024,
+    "vis_embedding_dim": 16,
+    "mech_embedding_dim": 16,
+    "fusion_dim": 0,
+    "beta": 0.003,
+    "visual_likelihood": "gaussian",
+    "learn_decoder_variance": false,
+    "modality_rnn_mode": "separate",
+    "posterior_fusion": "moe",
+    "moment_matching": true,
+    "perception_lr": 0,
+    "exploration_lr": 3e-05,
+    "exploitation_lr": 0.0001,
+    "head_lr_scheduler": false,
+    "head_lr_scheduler_start_epoch": 10,
+    "rl_algorithm": "ppo",
+    "action_selection_strategy": "non_lexicographic",
+    "information_gain_reward_coef": 0.004,
+    "epsilon_greedy_probability": 0.4,
+    "exploration_objective": "realized_information_gain",
+    "uncertainty_metric": "joint",
+    "gate_mode": "fixed_threshold",
+    "fixed_gate_threshold": 520,
+    "gate_hidden_dims": [
+      128,
+      128
+    ],
+    "gate_lr": 0.0003,
+    "exploration_action_delta_huber_beta": 0.05,
+    "exploration_action_l2": 0
+  },
+  "train": {
+    "enabled": true,
+    "num_epochs": 200,
+    "batch_size": 16,
+    "seq_len": 100,
+    "print_every": 10,
+    "seed": 1999,
+    "c_vals": [
+      -100.0
+    ],
+    "force_mode": "auto",
+    "exploration_warmup_epochs": 0,
+    "gate_hysteresis": 50,
+    "gate_uncertainty_ema_alpha": 0.85
+  },
+  "evaluation": {
+    "enabled": true,
+    "suite_names": [
+      "in_distribution",
+      "curvature_generalization",
+      "vision_degraded",
+      "mech_degraded"
+    ],
+    "episodes_per_condition": 10,
+    "base_seed": 9000,
+    "policy_modes": [
+      "auto",
+      "exploit",
+      "explore"
+    ],
+    "record_step_traces": true,
+    "max_trace_episodes_per_condition": 1,
+    "deterministic_exploitation": true,
+    "deterministic_exploration": true
+  }
+}

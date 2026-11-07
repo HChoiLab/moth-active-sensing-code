@@ -1,0 +1,12 @@
+torch==2.11.0
+numpy==2.2.6
+pandas==2.3.3
+matplotlib==3.10.8
+scipy==1.15.3
+gymnasium==1.2.3
+Pillow==12.2.0
+SciencePlots==2.2.1
+openpyxl==3.1.5
+imageio>=2.31,<3
+jupyterlab==4.6.2
+ipykernel==6.29.5
