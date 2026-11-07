@@ -1,6 +1,6 @@
 {
   "run_name": "",
-  "output_root": "/storage/scratch1/2/asharafeldin3/moth-runs/results/pretrained_perception_exploration/flat_cross_v2/fixed_switching_20",
+  "output_root": "results/experiments/fixed_switch_flat-cross",
   "notes": "Small uncertainty-gated experiment to validate the train/eval pipeline.",
   "environment": {
     "dt": 0.01,
@@ -16,7 +16,7 @@
   },
   "model": {
     "model_type": "uncertainty_gated_allocentric",
-    "pretrained_perception_checkpoint": "checkpoints/pretrained_exploration_061026_flat-cross.pt",
+    "pretrained_perception_checkpoint": "checkpoints/exploration_flat-cross.pt",
     "latent_dim": 1024,
     "hidden_dim": 1024,
     "vis_embedding_dim": 16,
